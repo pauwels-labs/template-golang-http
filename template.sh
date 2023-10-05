@@ -5,7 +5,7 @@ echo "Renaming all instances of \"$OLD_NAME\" to \"$NEW_NAME\""
 rm -rf vendor
 rm -rf go.sum
 grep -rl "$OLD_NAME" . --exclude-dir=.git --exclude=template.sh | xargs sed -i "s/$OLD_NAME/$NEW_NAME/g"
-npm install
+go mod tidy
 echo "Rename complete, this script will now delete itself"
 rm -rf template.sh
 echo "Pushing initial v0.0.0 tag pre-rename commit"
